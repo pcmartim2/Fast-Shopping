@@ -26,4 +26,4 @@ removê-las aos favoritos ;
 Cenário secundário: Possibilidade de adicionar uma nova localidade de uma loja (só possível com uma conta de gestor da loja/mercado); 
 
 ##### Referências:
-https://www.techtudo.com.br/noticias/2018/11/o-que-e-e-como-funciona-o-app-glovo-conheca-o-app-de-delivery.ghtml
+[1] Coelho, T. (2018). O que é e como funciona o Glovo? Conheça o app de delivery. Acedido em: 4, Outubro, 2019, em: https://www.techtudo.com.br/noticias/2018/11/o-que-e-e-como-funciona-o-app-glovo-conheca-o-app-de-delivery.ghtml
