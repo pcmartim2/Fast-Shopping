@@ -1,6 +1,6 @@
 # Fast-Shopping
 
-##### Participantes: Martim Costa nº50039055 , Miguel Amaro 50037237 ;
+##### Participantes: Martim Costa nº50039055 , Miguel Amaro nº50037237 ;
 
 Fast Shopping é o nome incial da nossa ideia, e a ideia consiste num utilizador ter um mapa da sua zona disponibilizado,
 mostrando as lojas registada na aplicação e os seus produtos incluindo os seus preços e talvez informação adicional caso fosse necessário.
