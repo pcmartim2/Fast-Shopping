@@ -4,8 +4,8 @@
 Fast Shopping é o nome incial da nossa ideia, e a ideia consiste num utilizador ter um mapa da sua zona disponibilizado,
 mostrando as lojas registada na aplicação e os seus produtos incluindo os seus preços e talvez informação adicional caso fosse necessário.
 
-Cenários principais: Visualizar a localização da loja/mercado, os produtos correspondentes à loja e a sua atualização (a atualização 
-dos produtos só seria possível com uma conta de gestor da loja/mercado), a sua quantidade, preço e horário de abertura e fecho.
+Cenários principais: O utilizador abre a aplicação, aparece um mapa da sua localização com as lojas/supermercado que se encontram há sua volta
+podendo carregar numa delas, assim aparecendo os produtos vendidos no sítio incluindo o seu preço e informação adicional caso necessário.
 
 Cenário secundário: login(seria diferente para admin, gestor da loja/mercado, e utilizador normal);
 
