@@ -1,0 +1,12 @@
+SET FOREIGN_KEY_CHECKS = 0;
+drop table Categoria;
+drop table Comentario;
+drop table Favoritos;
+drop table Loja;
+drop table Loja_has_Produto;
+drop table Produto;
+drop table Produto_has_Categoria;
+drop table Utilizador;
+drop table EstiloLoja;
+drop table Loja_has_Estilo;
+SET FOREIGN_KEY_CHECKS = 1;
