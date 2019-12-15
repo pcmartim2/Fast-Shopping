@@ -4,8 +4,8 @@
 
 ##### Enquadramento:
 
-Fast Shopping é o nome incial da nossa ideia, e a ideia consiste num utilizador ter um mapa da sua zona disponibilizado,
-mostrando as lojas registada na aplicação e os seus produtos incluindo os seus preços e talvez informação adicional caso fosse necessário.
+Fast Shopping é o nome incial da nossa ideia, a nossa aplicação vai ajudar na facilidade de uma pessoa encontrar os produtos que requer e o seu respetivo preço. O utilizador quando abre a aplicação vai conseguir ver um mapa da sua zona disponibilizada, mostrando todas as lojas registadas na aplicação e também vai conseguir ver todo as lojas que tem como favoritas. O utilizador quando clica numa determinada loja que está no mapa, vai abrir uma nova página com uma lista dos produtos que a loja tem, que podem ser filtrados por categorias. O utilizador poderá escolher a quantidade do produto que quer adicionar no carrinho de compras e à medida que vai adicionando os produtos vai conseguir ver o preço total. 
+
 
 -Já existem algumas aplicações que têm usos parecidos com a nossa ideia como por exemplo a [*1*] [*Glovo*](https://glovoapp.com/pt_PT/lis/), que pode entregar 
 a casa os produtos escolhidos dos supermercados ou outros que existem na aplicação.
