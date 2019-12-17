@@ -53,3 +53,8 @@ select distinct nomeCategoria
 from Categoria C, Loja L, Loja_has_Produto P, Produto_has_Categoria A, Produto K
 where L.IdLoja = "variavel escolhida pelo utilizador na aplicação" and P.Loja_IdLoja = "variavel escolhida pelo utilizador na aplicação" and C.IdCategoria = A.Categoria_IdCategoria and K.IdProduto = P.Produto_IdProduto and K.IdProduto = A.Produto_IdProduto;
 
+#mostra os produtos das lojas
+select L.NomeLoja as "Loja", P.NomeProduto as "Produto"
+from Loja L
+inner join Loja_has_Produto H on L.IdLoja = H.Loja_IdLoja
+inner join Produto P on H.Produto_IdProduto = P.IdProduto;
