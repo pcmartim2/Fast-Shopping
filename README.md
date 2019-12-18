@@ -1,6 +1,6 @@
 
 <p align="center">
-  <img width="30" height="200" src="https://i.imgur.com/RGZmCFQ.png">
+  <img width="300" height="200" src="https://i.imgur.com/RGZmCFQ.png">
 </p>
 
 # Titulo: Fast-Shopping
