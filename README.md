@@ -1,5 +1,5 @@
 
-![test image size](https://i.imgur.com/RGZmCFQ.png){:height="200px" width="100px"}
+![test image size](https://i.imgur.com/RGZmCFQ.png){:height="50px" width="50px"}
 
 # Titulo: Fast-Shopping
 
