@@ -1,3 +1,6 @@
+
+![Alt Text](https://imgur.com/RGZmCFQ)
+
 # Titulo: Fast-Shopping
 
 ##### Participantes: Martim Costa nº50039055 , Miguel Amaro nº50037237 ;
