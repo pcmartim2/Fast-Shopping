@@ -1,5 +1,7 @@
 
-<img src="https://i.imgur.com/RGZmCFQ.png" align="center" width="400" height="790">
+<p align="center">
+  <img width="460" height="300" src="https://i.imgur.com/RGZmCFQ.png">
+</p>
 
 # Titulo: Fast-Shopping
 
