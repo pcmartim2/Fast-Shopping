@@ -1,5 +1,5 @@
 
-![test image size](https://i.imgur.com/RGZmCFQ.png){:height="50px" width="50px"}
+<img src="https://i.imgur.com/RGZmCFQ.png" width="400" height="790">
 
 # Titulo: Fast-Shopping
 
