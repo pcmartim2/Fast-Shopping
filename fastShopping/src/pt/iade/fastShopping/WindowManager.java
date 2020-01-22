@@ -9,6 +9,8 @@ import javafx.scene.layout.BorderPane;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 import pt.iade.fastShopping.controllers.LoginUtilizadorController;
+import pt.iade.fastShopping.controllers.MapaScreenController;
+import pt.iade.fastShopping.controllers.SidebarLojaController;
 
 public class WindowManager {
 	
@@ -57,4 +59,15 @@ public class WindowManager {
 		}
 		pane.setCenter(root);
 	}
+	
+	public static void openMainWindow() {
+		openWindow("views/MapaScreen.fxml", primaryStage, new MapaScreenController(), "FastShopping", 926, 471);
+		primaryStage.show();
+	}
+	
+	public static void openSidebarLojaWindow() {
+		openWindow("views/SidebarLoja.fxml", primaryStage, new SidebarLojaController(), "FastShopping", 926, 471);
+		primaryStage.show();
+	}
+
 }

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane fx:id="root" prefHeight="471.0" prefWidth="926.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <ImageView fitHeight="492.0" fitWidth="941.0" layoutX="5.0">
+         <image>
+            <Image url="@../../images/Lisbone.PNG" />
+         </image>
+      </ImageView>
+      <ImageView onMouseClicked="#clicar">
+         <image>
+            <Image url="@../../images/star1.png" />
+         </image>
+      </ImageView>
+      <Line endX="740.5" endY="0.999987781047821" layoutX="202.0" layoutY="-1.0" startX="-202.0" startY="0.999987781047821" strokeWidth="14.0" />
+      <Line endX="-182.60000610351562" endY="-189.19998168945312" layoutX="184.0" layoutY="189.0" startX="-182.60000610351562" startY="302.5677795410156" strokeWidth="7.0" />
+      <Line endX="711.0" endY="9.56781005859375" layoutX="232.0" layoutY="482.0" startX="-224.19998168945312" startY="9.56781005859375" strokeWidth="7.0" />
+      <Line endX="211.0" endY="-13.000012397766113" layoutX="735.0" layoutY="12.0" startX="211.0" startY="475.56781005859375" strokeWidth="7.0" />
+      <ImageView fitHeight="34.0" fitWidth="36.0" layoutX="14.0" layoutY="448.0" onMouseClicked="#Logout" pickOnBounds="true" preserveRatio="true" rotate="-180.0">
+         <image>
+            <Image url="@../../images/exit_80px.png" />
+         </image>
+      </ImageView>
+      <AnchorPane layoutX="736.0" layoutY="14.0" prefHeight="48.0" prefWidth="200.0" style="-fx-background-color: #fff;">
+         <children>
+            <Label fx:id="nome_UtilizadorView" layoutX="70.0" layoutY="15.0" prefHeight="18.0" prefWidth="116.0" text="Label" />
+            <ImageView fitHeight="34.0" fitWidth="34.0" layoutX="11.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../images/user_filled_100px.png" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="backgroundFavoritos" disable="true" layoutX="115.0" layoutY="69.0" prefHeight="342.0" prefWidth="654.0" style="-fx-background-color: #ffffff;" visible="false">
+         <children>
+            <Line endX="651.6000366210938" endY="7.62939453125E-6" startX="0.4000091552734375" startY="7.62939453125E-6" />
+            <Line endX="-0.4000091552734375" endY="7.62939453125E-6" startX="-0.4000091552734375" startY="341.6000061035156" />
+            <Line endX="653.2000122070312" endY="341.6000061035156" startX="0.4000091552734375" startY="341.6000061035156" />
+            <Line endX="652.1000366210938" endY="0.5000076293945312" startX="652.1000366210938" startY="339.9999694824219" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffffff00" height="34.0" stroke="BLACK" strokeType="INSIDE" width="652.0" />
+            <Text layoutX="14.0" layoutY="22.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Favoritos" />
+            <ListView fx:id="viewFavoritos" layoutX="1.0" layoutY="36.0" prefHeight="302.0" prefWidth="652.0" style="-fx-background-color: #ffffff;" />
+            <ImageView fitHeight="25.0" fitWidth="75.0" layoutX="621.0" layoutY="5.0" onMouseClicked="#closeFavoritos" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../images/close_80px.png" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>
