@@ -158,7 +158,7 @@ public class LojaDAO {
 		}
 	}
 	
-	 /**
+	/**
 	 * Metodo para ir buscar a imagem da loja atraves do id da loja
 	 * @param idLoja id da loja
 	 * @return iamgem em byte array
@@ -171,7 +171,7 @@ public class LojaDAO {
 			ResultSet results = statement.executeQuery();
 			while (results.next()) {
 				InputStream imagemLoja = results.getBinaryStream(1);
-    			
+    			bytesImagem = ImagemDAO.getBytesFromInputStream(imagemLoja);
 			}
 			statement.close();
 			results.close();

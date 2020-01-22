@@ -24,7 +24,7 @@ public class FavoritoDAO {
 		catch (SQLException ev) {
 			ev.printStackTrace();
 		}
-	 }
+	}
 	
 	/**
 	 * Metodo para remover um certo favorito da base de dados, de acordo com id do utilizador e id da loja
