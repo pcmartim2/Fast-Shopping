@@ -24,7 +24,7 @@ insert into Produto (NomeProduto, Preco, Imagem) values ("Leite Vigor", 0.70, 11
 
 insert into Produto_has_Categoria (Produto_IdProduto, Categoria_IdCategoria) values (1,4);
 
-insert into Utilizador (NomeUtilizador) values ("Jorge");
+insert into Utilizador (NomeUtilizador,isAdmin) values ("Jorge",false);
 
 insert into Favoritos (fav_IdUtilizador, fav_IdLoja) values (1,3);
 insert into Favoritos (fav_IdUtilizador, fav_IdLoja) values (1,1);
