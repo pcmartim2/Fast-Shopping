@@ -12,7 +12,7 @@ public class LoginRegistrarDAO {
 	 * @return true ou false respetivamente se o o nome de utlizador ja estiver registado na nossa aplicacao
 	 */
 	public static boolean verificarUtilizador(String utilizador) {
-		boolean verificar = false;
+		 boolean verificar = false;
 		try {
 			//Vai verificar se o nome já existe na base de dados
 			PreparedStatement statement = DBConnector.getConnection().prepareStatement("SELECT IdUtilizador FROM Utilizador WHERE NomeUtilizador = '"+utilizador+"'");

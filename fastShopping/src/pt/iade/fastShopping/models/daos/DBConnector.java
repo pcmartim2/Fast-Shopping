@@ -16,7 +16,7 @@ public class DBConnector {
 	static Statement statement;
 	
 	public String host, database, username, password;
-	public int port;
+	 public int port;
 	
 	/**
 	 * Metodo para fazer conexao com a base de dados

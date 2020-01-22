@@ -158,7 +158,7 @@ public class LojaDAO {
 		}
 	}
 	
-	/**
+	 /**
 	 * Metodo para ir buscar a imagem da loja atraves do id da loja
 	 * @param idLoja id da loja
 	 * @return iamgem em byte array

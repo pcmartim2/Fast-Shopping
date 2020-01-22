@@ -76,8 +76,8 @@ public class MapaScreenController {
 							idLoja = LojaId;
 							WindowManager.openSidebarLojaWindow();
 						}
-						
-					}
+					 	
+					 }
 					statement.close();
 					results.close();
 				}
