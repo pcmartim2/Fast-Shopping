@@ -8,9 +8,13 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
-import pt.iade.fastShopping.controllers.LoginUtilizadorController;
-import pt.iade.fastShopping.controllers.MapaScreenController;
 import pt.iade.fastShopping.controllers.SidebarLojaController;
+import pt.iade.fastShopping.controllers.LoginUtilizadorController;
+import pt.iade.fastShopping.controllers.LojaAddProdutosController;
+import pt.iade.fastShopping.controllers.LojaComentariosScreenController;
+import pt.iade.fastShopping.controllers.LojaProdutosController;
+import pt.iade.fastShopping.controllers.MapaAdminScreenController;
+import pt.iade.fastShopping.controllers.MapaScreenController;
 
 public class WindowManager {
 	
@@ -21,9 +25,42 @@ public class WindowManager {
 		WindowManager.primaryStage = primaryStage;
 	}
 
+	public static void openMainWindow() {
+		openWindow("views/MapaScreen.fxml", primaryStage, new MapaScreenController(), "FastShopping", 926, 471);
+		primaryStage.show();
+	}
+
 	public static void openLoginWindow() {
 		openWindow("views/LoginUtilizador.fxml", primaryStage, new LoginUtilizadorController(), "FastShopping", 600,
 				400);
+		primaryStage.show();
+	}
+
+	public static void openAdminWindow() {
+		openWindow("views/MapaScreenAdmin.fxml", primaryStage, new MapaAdminScreenController(), "FastShopping", 926,
+				471);
+		primaryStage.show();
+	}
+	
+	public static void openLojaAddProdutosWindow() {
+		openWindow("views/LojaAddProdutos.fxml", primaryStage, new LojaAddProdutosController(), "FastShopping", 926,
+				471);
+		primaryStage.show();
+	}
+
+	public static void openComentariosWindow() {
+		openWindow("views/LojaComentariosScreen.fxml", primaryStage, new LojaComentariosScreenController(),
+				"FastShopping", 926, 471);
+		primaryStage.show();
+	}
+
+	public static void openProdutosWindow() {
+		openWindow("views/LojaProdutos.fxml", primaryStage, new LojaProdutosController(), "FastShopping", 926, 471);
+		primaryStage.show();
+	}
+	
+	public static void openSidebarLojaWindow() {
+		openWindow("views/SidebarLoja.fxml", primaryStage, new SidebarLojaController(), "FastShopping", 926, 471);
 		primaryStage.show();
 	}
 
@@ -59,15 +96,4 @@ public class WindowManager {
 		}
 		pane.setCenter(root);
 	}
-	
-	public static void openMainWindow() {
-		openWindow("views/MapaScreen.fxml", primaryStage, new MapaScreenController(), "FastShopping", 926, 471);
-		primaryStage.show();
-	}
-	
-	public static void openSidebarLojaWindow() {
-		openWindow("views/SidebarLoja.fxml", primaryStage, new SidebarLojaController(), "FastShopping", 926, 471);
-		primaryStage.show();
-	}
-
 }

@@ -1,17 +1,20 @@
 package pt.iade.fastShopping.controllers;
 
+import java.io.ByteArrayInputStream;
 import java.io.IOException;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import pt.iade.fastShopping.WindowManager;
+import pt.iade.fastShopping.models.daos.DBConnector;
 import pt.iade.fastShopping.models.daos.FavoritoDAO;
-
+import pt.iade.fastShopping.models.daos.LojaDAO;
 
 public class SidebarLojaController {
 	
@@ -39,7 +42,14 @@ public class SidebarLojaController {
 	 */
 	@FXML
 	private void initialize() throws IOException {
-	
+		
+		//Vai colocar a imagem da Loja
+		Image img = new Image(new ByteArrayInputStream(LojaDAO.getImagemLoja(MapaScreenController.idLoja)));
+		imagemLoja.setImage(img);
+		imagemLoja.setFitHeight(197);
+		imagemLoja.setFitWidth(263);
+		
+		WindowManager.loadUI("views/LojaProdutos.fxml", new LojaProdutosController(), borderPane);
 
 		//Metodo que verifica se o utilizador tem a loja como favorito
 		if (FavoritoDAO.getFavoritoLoja(id_Loja, id_User)) {
@@ -92,8 +102,21 @@ public class SidebarLojaController {
 		if (event.getButton() == MouseButton.PRIMARY) {
 			WindowManager.openMainWindow();
 		}
-	 }
+	}
 
+	/**
+	 * Ao clicar no button dos comentarios no lado direito da sidebar vai abrir uma nova 
+	 * pagina dos comentarios.
+	 * @param event quando o utilizador clica no button
+	 * @throws IOException exception
+	 */
+	@FXML
+	void verComentarios(MouseEvent event) throws IOException {
+
+		if (event.getButton() == MouseButton.PRIMARY) {
+			WindowManager.loadUI("views/LojaComentariosScreen.fxml", new LojaComentariosScreenController(), borderPane);
+		}
+	}
 	
 	/**
 	 * Metodo para adiconar um pop-up com um titilo e um header

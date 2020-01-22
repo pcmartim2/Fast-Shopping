@@ -30,7 +30,7 @@ import pt.iade.fastShopping.models.daos.LojaDAO;
 
 public class MapaAdminScreenController {
 
-	 private double coordX;
+	private double coordX;
 	private double coordY;
 	private boolean selecionado = false;
 
@@ -231,4 +231,3 @@ public class MapaAdminScreenController {
 		}
 	}
 }
-
