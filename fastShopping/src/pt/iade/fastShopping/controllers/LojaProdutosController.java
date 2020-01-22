@@ -15,6 +15,7 @@ import pt.iade.fastShopping.models.daos.ProdutoDAO;
 
 public class LojaProdutosController {
 	
+	
 	/**
 	 * ListView de todos os produtos da loja
 	 */

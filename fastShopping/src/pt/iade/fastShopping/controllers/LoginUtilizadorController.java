@@ -52,7 +52,7 @@ public class LoginUtilizadorController {
 			Login();
 		}
 	}
-
+	
 	/**
 	 * Metodo onde vai verificar se o utilizador é um utilizador normal, admin ou proprietario de alguma loja.
 	 */

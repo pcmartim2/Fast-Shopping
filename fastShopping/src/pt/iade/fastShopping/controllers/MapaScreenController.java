@@ -18,6 +18,7 @@ import pt.iade.fastShopping.models.daos.LojaDAO;
 
 public class MapaScreenController {
 
+	
 	/**
 	 * Variavel onde vai ficar armazenado o id da loja em que o utilizador clicou
 	 */

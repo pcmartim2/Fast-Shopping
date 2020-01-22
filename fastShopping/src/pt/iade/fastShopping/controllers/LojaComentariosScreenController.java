@@ -11,7 +11,6 @@ import pt.iade.fastShopping.models.daos.DBConnector;
 
 public class LojaComentariosScreenController {
 	
-	
 	/**
 	 * Listview de todos os comentarios da loja
 	 */

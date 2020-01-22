@@ -18,6 +18,7 @@ import pt.iade.fastShopping.models.daos.LojaDAO;
 
 public class SidebarLojaController {
 	
+	
 	/**
 	 * Imagens das estrelas favoritos e da loja
 	 */

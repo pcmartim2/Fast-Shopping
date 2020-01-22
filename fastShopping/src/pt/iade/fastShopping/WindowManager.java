@@ -18,7 +18,6 @@ import pt.iade.fastShopping.controllers.MapaScreenController;
 
 public class WindowManager {
 	
-	
 	private static Stage primaryStage;
 
 	public static void setPrimaryStage(Stage primaryStage) {

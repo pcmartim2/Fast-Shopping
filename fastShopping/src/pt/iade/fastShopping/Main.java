@@ -19,7 +19,6 @@ import pt.iade.fastShopping.models.daos.DBConnector;
 
 public class Main extends Application {
 	
-	
 	/**
 	 * Quando a aplicação inicia vai conectar à base de dados 
 	 * e vai abrir a pagina de login chamando o metodo do WindowManager.

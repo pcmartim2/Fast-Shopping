@@ -30,6 +30,7 @@ import pt.iade.fastShopping.models.daos.LojaDAO;
 
 public class MapaAdminScreenController {
 
+	
 	/**
 	 * Coordenada X de quando o utilizador clica no mapa
 	 */

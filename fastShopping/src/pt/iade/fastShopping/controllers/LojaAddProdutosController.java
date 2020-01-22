@@ -27,6 +27,7 @@ import pt.iade.fastShopping.models.daos.ProdutoDAO;
 
 public class LojaAddProdutosController {
 	
+	
 	/**
 	 * Imagem do produto
 	 */
