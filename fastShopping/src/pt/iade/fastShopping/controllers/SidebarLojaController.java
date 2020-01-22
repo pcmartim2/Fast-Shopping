@@ -18,9 +18,15 @@ import pt.iade.fastShopping.models.daos.LojaDAO;
 
 public class SidebarLojaController {
 	
+	/**
+	 * Imagens das estrelas favoritos e da loja
+	 */
 	@FXML
     private ImageView unfav, fav, imagemLoja;
 
+	/**
+	 * borderPane
+	 */
     @FXML
     private BorderPane borderPane;
 	

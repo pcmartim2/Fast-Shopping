@@ -10,13 +10,23 @@ import pt.iade.fastShopping.models.daos.ComentarioDAO;
 import pt.iade.fastShopping.models.daos.DBConnector;
 
 public class LojaComentariosScreenController {
-
+	
+	
+	/**
+	 * Listview de todos os comentarios da loja
+	 */
 	@FXML
 	private ListView<String> comentarioList;
 
+	/**
+	 * Zona para adicionar um novo comentario
+	 */
 	@FXML
 	private AnchorPane backgroudEnviarComentario;
 
+	/**
+	 * Zona onde o utilizador coloca o comentario
+	 */
 	@FXML
 	private TextArea textAreaComentario;
 

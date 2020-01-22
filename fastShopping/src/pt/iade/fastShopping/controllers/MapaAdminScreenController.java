@@ -30,25 +30,54 @@ import pt.iade.fastShopping.models.daos.LojaDAO;
 
 public class MapaAdminScreenController {
 
+	/**
+	 * Coordenada X de quando o utilizador clica no mapa
+	 */
 	private double coordX;
+	
+	/**
+	 * Coordenada Y de quando o utilizador clica no mapa
+	 */
 	private double coordY;
+	
+	/**
+	 * Verificar se já tem selecionado o novo local para a loja
+	 */
 	private boolean selecionado = false;
-
+	
+	/**
+	 * Infomação da loja
+	 */
 	@FXML
 	private Label nome_UtilizadorView, info_nomeLoja, info_proprietarioLoja, info_estiloLoja;
 
+	/**
+	 * Zona onde se escreve o nome da loja e proprietario
+	 */
 	@FXML
 	private TextField nome_Loja, proprietario_Loja;
-
+	
+	/**
+	 * Circulo da loja no mapa
+	 */
 	@FXML
 	private Circle localSelecionado;
 
+	/**
+	 * Informação da Loja 
+	 */
 	@FXML
 	private AnchorPane root, info_Loja;
 
+	/**
+	 * Selecionar o estilo da loja
+	 */
 	@FXML
 	private ChoiceBox<String> estilo_Loja;
 	
+	/**
+	 * Imagem da Loja
+	 */
 	@FXML
     private ImageView imagemLoja;
 

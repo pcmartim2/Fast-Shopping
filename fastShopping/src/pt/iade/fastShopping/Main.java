@@ -19,6 +19,13 @@ import pt.iade.fastShopping.models.daos.DBConnector;
 
 public class Main extends Application {
 	
+	
+	/**
+	 * Quando a aplicação inicia vai conectar à base de dados 
+	 * e vai abrir a pagina de login chamando o metodo do WindowManager.
+	 * @param primaryStage Stage
+	 */
+	
 	@Override
 	public void start(Stage primaryStage) throws IOException {
 		
@@ -30,6 +37,10 @@ public class Main extends Application {
 	
 	}
 	
+	/**
+	 * 
+	 * @param args inicia a aplicação
+	 */
 	public static void main(String[] args) {
 		launch(args);
 		

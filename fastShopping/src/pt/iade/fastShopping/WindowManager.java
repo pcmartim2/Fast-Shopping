@@ -25,45 +25,76 @@ public class WindowManager {
 		WindowManager.primaryStage = primaryStage;
 	}
 
+	
+	/**
+	 * Metodo que serve para abrir a janela do Mapa das Lojas.
+	 */
 	public static void openMainWindow() {
 		openWindow("views/MapaScreen.fxml", primaryStage, new MapaScreenController(), "FastShopping", 926, 471);
 		primaryStage.show();
 	}
 
+	/**
+	 * Metodo que serve para abrir a janela de Login.
+	 */
 	public static void openLoginWindow() {
 		openWindow("views/LoginUtilizador.fxml", primaryStage, new LoginUtilizadorController(), "FastShopping", 600,
 				400);
 		primaryStage.show();
 	}
 
+	/**
+	 * Metodo que serve para abrir a janela do Admin.
+	 */
 	public static void openAdminWindow() {
 		openWindow("views/MapaScreenAdmin.fxml", primaryStage, new MapaAdminScreenController(), "FastShopping", 926,
 				471);
 		primaryStage.show();
 	}
 	
+	/**
+	 * Metodo que serve para abrir a janela do Proprietario da Loja.
+	 */
 	public static void openLojaAddProdutosWindow() {
 		openWindow("views/LojaAddProdutos.fxml", primaryStage, new LojaAddProdutosController(), "FastShopping", 926,
 				471);
 		primaryStage.show();
 	}
 
+	/**
+	 * Metodo que serve para abrir a janela dos Comentarios da Loja.
+	 */
 	public static void openComentariosWindow() {
 		openWindow("views/LojaComentariosScreen.fxml", primaryStage, new LojaComentariosScreenController(),
 				"FastShopping", 926, 471);
 		primaryStage.show();
 	}
 
+	/**
+	 * Metodo que serve para abrir a janela do Produtos da Loja.
+	 */
 	public static void openProdutosWindow() {
 		openWindow("views/LojaProdutos.fxml", primaryStage, new LojaProdutosController(), "FastShopping", 926, 471);
 		primaryStage.show();
 	}
 	
+	/**
+	 * Metodo que serve para abrir a janela do SideBar.
+	 */
 	public static void openSidebarLojaWindow() {
 		openWindow("views/SidebarLoja.fxml", primaryStage, new SidebarLojaController(), "FastShopping", 926, 471);
 		primaryStage.show();
 	}
 
+	/**
+	 * Metodo que serve para abrir as janelas e adicionar o controlador.
+	 * @param viewPath local do fxml
+	 * @param window stage
+	 * @param controller controlador do fxml
+	 * @param titulo titulo a jenela
+	 * @param width largura da janela
+	 * @param height altura da janela
+	 */
 	public static void openWindow(String viewPath, Stage window, Object controller, String titulo, double width,
 			double height) {
 		try {
@@ -83,6 +114,12 @@ public class WindowManager {
 
 	}
 	
+	/**
+	 * Metodo vai servir para carregar um fxml dentro de um fxml.
+	 * @param viewPath local da janela
+	 * @param controller conrolador da janela
+	 * @param pane borderPane da janela
+	 */
 	public static void loadUI(String viewPath, Object controller, BorderPane pane) {
 		AnchorPane root = null;
 		try {

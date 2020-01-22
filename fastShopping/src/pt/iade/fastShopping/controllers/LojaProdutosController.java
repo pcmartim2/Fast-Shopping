@@ -15,19 +15,33 @@ import pt.iade.fastShopping.models.daos.ProdutoDAO;
 
 public class LojaProdutosController {
 	
-	
+	/**
+	 * ListView de todos os produtos da loja
+	 */
 	@FXML
     private ListView<Produto> listViewProdutos;
 	
+	/**
+	 * ListView do carrinho de compras da loja
+	 */
 	@FXML
     private ListView<String> listViewCompras;
 	
+	/**
+	 * Selecionar a categoria para filtrar os produtos
+	 */
 	@FXML
     private ComboBox<String> cbCategoria;
 	
+	/**
+	 * Soma dos preços no carrinho de compras
+	 */
 	@FXML
     private Label precoTotal;
 	
+	/**
+	 * remover o produto do carrinho de compras
+	 */
 	@FXML
     private Button btnRemover;
 	

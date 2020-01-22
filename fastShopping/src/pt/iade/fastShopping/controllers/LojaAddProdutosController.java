@@ -27,18 +27,33 @@ import pt.iade.fastShopping.models.daos.ProdutoDAO;
 
 public class LojaAddProdutosController {
 	
+	/**
+	 * Imagem do produto
+	 */
 	@FXML
     private ImageView imagemProduto;
 	
+	/**
+	 * Filtrar as categorias do produto
+	 */
 	@FXML
     private ChoiceBox<String> categoriaProduto;
 	
+	/**
+	 * Nome do Produto quando adicionado na loja
+	 */
 	@FXML
 	private TextField nome_Produto;
 	
+	/**
+	 * Preço do produto quando adicionado na loja
+	 */
 	@FXML
     private Spinner<Double> preco_Produto;
 	
+	/**
+	 * Listview dos produtos já adicionados na loja
+	 */
 	@FXML
     private ListView<Produto> listViewProdutos;
 

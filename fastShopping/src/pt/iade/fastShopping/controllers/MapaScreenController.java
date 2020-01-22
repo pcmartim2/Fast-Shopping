@@ -23,18 +23,33 @@ public class MapaScreenController {
 	 */
 	public static int idLoja;
 
+	/**
+	 * Verifica os favoritos
+	 */
 	private boolean visivel = false;
 	private boolean disable = true;
 
+	/**
+	 * Onde vai adicionar as lojas
+	 */
 	@FXML
 	private AnchorPane root;
 
+	/**
+	 * Nome do utilizador que entrou
+	 */
 	@FXML
 	private Label nome_UtilizadorView;
-
+	
+	/**
+	 * Onde vai ficar a listview dos favoritos
+	 */
 	@FXML
 	private AnchorPane backgroundFavoritos;
 
+	/**
+	 * ListView de todos os favoritos de um certo utilizador
+	 */
 	@FXML
 	private ListView<String> viewFavoritos;
 
