@@ -39,8 +39,9 @@ public class LoginRegistrarDAO {
 	public static void addUtilizador(String utilizador) {
 		
 		try {
-			PreparedStatement statement2 = DBConnector.getConnection().prepareStatement("INSERT INTO Utilizador (NomeUtilizador) VALUES (?)");
+			PreparedStatement statement2 = DBConnector.getConnection().prepareStatement("INSERT INTO Utilizador (NomeUtilizador, isAdmin) VALUES (?,?)");
 			statement2.setString(1, utilizador);
+			statement2.setBoolean(2, false);
 			statement2.executeUpdate();
 		}
 		catch (SQLException ev) {
@@ -68,6 +69,30 @@ public class LoginRegistrarDAO {
 			ev.printStackTrace();
 		}
 		return idUtilizador;
+	}
+	
+	/**
+	 * Metodo para verificar se um dado nome de utilizador é admin
+	 * @param nomeUtilizador nome do utilizador
+	 * @return se é admin ou nao
+	 */
+	public static boolean verificarAdmin(String nomeUtilizador) {
+		
+		try {
+			PreparedStatement statement = DBConnector.getConnection().prepareStatement("SELECT isAdmin FROM Utilizador WHERE NomeUtilizador = ?");
+			statement.setString(1, nomeUtilizador);
+			ResultSet results = statement.executeQuery();
+			if (results.next()) {
+				return results.getBoolean(1);
+			}
+			statement.close();
+			results.close();
+		}
+		catch (SQLException ev) {
+			ev.printStackTrace();
+		}
+		return false;
+		
 	}
 	
 }

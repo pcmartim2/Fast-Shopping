@@ -1,23 +1,12 @@
 package pt.iade.fastShopping.models.daos;
 
-import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.ArrayList;
-
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.ListView;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.paint.Color;
-import javafx.scene.shape.Circle;
-import pt.iade.fastShopping.models.Produto;
 
 public class DBConnector {
 

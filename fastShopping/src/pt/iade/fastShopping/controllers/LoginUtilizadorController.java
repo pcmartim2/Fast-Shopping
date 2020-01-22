@@ -65,7 +65,7 @@ public class LoginUtilizadorController {
 				nome_UtilizadorLabel = nome_Utilizador.getText();
 				//Vai converter o nome do utilizador em id
 				IdUser = LoginRegistrarDAO.getIdUtilizador(nome_Utilizador.getText());
-				if (nome_Utilizador.getText().equalsIgnoreCase("admin")) {
+				if (LoginRegistrarDAO.verificarAdmin(nome_Utilizador.getText())) {
 					WindowManager.openAdminWindow();
 				}
 				// login do proprietario da loja
