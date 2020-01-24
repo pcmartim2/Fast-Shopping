@@ -13,22 +13,22 @@ create table EstiloLoja (IdEstilo int not null auto_increment,
                          primary key (IdEstilo));       
        
 create table Utilizador (IdUtilizador int not null auto_increment,
-						 NomeUtilizador varchar(40) not null,
+			 NomeUtilizador varchar(40) not null,
                          IsAdmin boolean not null,
                          primary key (IdUtilizador));
 			
 create table Favoritos (fav_IdUtilizador int not null,
                         fav_IdLoja int not null,
                         foreign key (fav_IdUtilizador) references Utilizador (IdUtilizador),
-						foreign key (fav_IdLoja) references Loja(IdLoja) );
+			foreign key (fav_IdLoja) references Loja(IdLoja) );
 			
 create table Produto (IdProduto int not null auto_increment,
-					  NomeProduto varchar(45) not null,
+		      NomeProduto varchar(45) not null,
                       Imagem longblob not null,
                       primary key (IdProduto));
                       
 create table Categoria (IdCategoria int not null auto_increment,
-						nomeCategoria varchar(30) not null,
+			nomeCategoria varchar(30) not null,
                         primary key (IdCategoria));
                         
 create table Comentario (IdComentario int not null auto_increment,
@@ -36,8 +36,8 @@ create table Comentario (IdComentario int not null auto_increment,
                          Loja_IdLoja int not null,
                          Utilizador_IdUtilizador int not null,
                          primary key (IdComentario),
-						 foreign key (Loja_IdLoja) references Loja(IdLoja),
-					     foreign key (Utilizador_IdUtilizador) references Utilizador(IdUtilizador));
+			 foreign key (Loja_IdLoja) references Loja(IdLoja),
+			 foreign key (Utilizador_IdUtilizador) references Utilizador(IdUtilizador));
                                               
                          
 create table Produto_has_Categoria (ProdutoId_has_Categoria int not null auto_increment,
@@ -45,7 +45,7 @@ create table Produto_has_Categoria (ProdutoId_has_Categoria int not null auto_in
                                     Produto_IdProduto int not null,
                                     primary key (ProdutoId_has_Categoria),
                                     foreign key (Categoria_IdCategoria) references Categoria(IdCategoria),
-									foreign key (Produto_IdProduto) references Produto(IdProduto));
+				    foreign key (Produto_IdProduto) references Produto(IdProduto));
 
 create table Loja_has_Produto (LojaId_has_Produto int not null auto_increment,
 							   Loja_IdLoja int not null,
@@ -64,8 +64,9 @@ create table Loja_has_Estilo (LojaId_has_Estilo int not null auto_increment,
                               
 create table Encomenda (IdEncomenda int not null auto_increment,
                         NumEncomenda int not null,
-						Produto_IdProduto int not null,
-						Loja_IdLoja int not null,
+			Produto_IdProduto int not null,
+			QuantidadeProduto int not null,
+			Loja_IdLoja int not null,
                         Utilizador_IdUtilizador int not null,
                         DataEncomenda date not null,
                         DataEntrega date not null,
