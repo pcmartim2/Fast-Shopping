@@ -25,10 +25,21 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.shape.Circle;
 import javafx.stage.FileChooser;
 import pt.iade.fastShopping.WindowManager;
+import pt.iade.fastShopping.models.Popups;
 import pt.iade.fastShopping.models.daos.DBConnector;
 import pt.iade.fastShopping.models.daos.LojaDAO;
-import pt.iade.fastShopping.models.daos.Popups;
 
+
+
+/**
+ * Nesta classe as funcionalidades relacionadas ao Painel administrador vão estar aqui.
+ * Quando clica no botão de adicionar vai verificar se o admin preencheu os requisitos necessários
+ * para adicionar uma nova loja na aplicação, o admin vai precisar de colocar
+ * a imagem da loja, o nome da loja, o proprietario da loja, o respetivo estilo da loja e
+ * vai ter de selecionar o local onde a loja vai ser no mapa. O administrador ao clicar numa loja
+ * que esteja no mapa poderá ver as seguintes informações da loja:
+ * nome da loja, proprietario da loja e estilo da loja.
+ */
 public class MapaAdminScreenController {
 
 	
@@ -105,7 +116,7 @@ public class MapaAdminScreenController {
 		
 		
 		// Vai adicionar o tipo de lojas no comboBox
-		LojaDAO.loadEstilosLojas(estilo_Loja);
+		estilo_Loja.getItems().addAll(LojaDAO.loadEstilosLojas());
 		
 		
 		

@@ -13,6 +13,16 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import pt.iade.fastShopping.models.Produto;
 
+
+/**
+ * Nesta classe vão estar todos os metodos(queries) relacionados com os Produtos.
+ * Tem os seguintes metodos:
+ * adicionar um novo produto na base de dados
+ * carregar produtos de uma dada categoria
+ * carregar produtos de uma certa loja
+ * ver todos as categorias de produtos de uma loja
+ * 
+ */
 public class ProdutoDAO {
 
 	/**

@@ -21,10 +21,21 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import pt.iade.fastShopping.models.CarrinhoCompras;
+import pt.iade.fastShopping.models.Popups;
 import pt.iade.fastShopping.models.Produto;
-import pt.iade.fastShopping.models.daos.Popups;
 import pt.iade.fastShopping.models.daos.ProdutoDAO;
 
+
+
+/**
+ * Nesta classe as funcionalidades relacionadas aos produtos da loja vão estar aqui.
+ * Quando o utilizador clica numa certa loja que está no mapa vai conseguir ver todos os produtos
+ * que a loja tem organizados por categorias com o respetivo preço.
+ * O utilizador vai poder selecionar a quantidade do produto que deseja e ao clicar no botão adicionar 
+ * vai colocar o produto na lista de compras, em baixo o utilizador vai conseguir ver o valor total.
+ * O utilizador também poderá remover o produto da lista de compras basta clicar no botão remover, mas 
+ * primeiro tem de ter um produto selecionado na lista de compras.
+ */
 public class LojaProdutosController {
 	
 	

@@ -1,13 +1,14 @@
 package pt.iade.fastShopping.models.daos;
 
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+/**
+ * Nesta classe vão estar todo de necessário para fazer a ligação com a respetiva base de dados.
+ * 
+ */
 public class DBConnector {
 
 	

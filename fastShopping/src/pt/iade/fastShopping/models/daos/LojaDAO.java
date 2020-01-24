@@ -8,11 +8,23 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-import javafx.scene.control.ChoiceBox;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 
+
+/**
+ * Nesta classe vão estar todos os metodos(queries) relacionados com as Lojas.
+ * Tem os seguintes metodos:
+ * Ver todas as lojas que estão na base de dados e coloca las no mapa
+ * adicionar uma nova loja na base de dados
+ * saber o id do estilo
+ * vai ver na base de dados todos os estilos de Loja
+ * saber o id da loja através do proprietario da loja
+ * verificar proprietario da loja
+ */
 public class LojaDAO {
 
 	/**
@@ -115,16 +127,17 @@ public class LojaDAO {
 	}
 	
 	/**
-	 * Metodos para adicionar os tipos de lojas na comboBox dos estilos
-	 * @param estilo_Loja comboBox dos estilos
+	 * Metodo vai a base de dados ver todos os estilos e vai adicionar na observablelist.
+	 * @return observableList dos estilos
 	 */
-	public static void loadEstilosLojas(ChoiceBox<String> estilo_Loja) {
+	public static ObservableList<String> loadEstilosLojas() {
+		ObservableList<String> estiloLojas = FXCollections.observableArrayList();
 		try {
 			Statement st = DBConnector.getConnection().createStatement();
 			ResultSet res = st.executeQuery("SELECT NomeEstilo FROM EstiloLoja");
 			while (res.next()) {
 				String estilo = res.getString(1);
-				estilo_Loja.getItems().add(estilo);
+				estiloLojas.add(estilo);
 			}
 			st.close();
 			res.close();
@@ -132,6 +145,7 @@ public class LojaDAO {
 		catch (SQLException e) {
 			e.printStackTrace();
 		}
+		return estiloLojas;
 	}
 	
 	/**

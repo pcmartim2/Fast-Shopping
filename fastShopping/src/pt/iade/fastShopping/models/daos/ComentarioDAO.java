@@ -8,6 +8,14 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import pt.iade.fastShopping.models.Comentarios;
 
+
+/**
+ * Nesta classe vão estar todos os metodos(queries) relacionados com os comentários.
+ * Tem os seguintes metodos:
+ * adicionar um novo comentario na base de dados
+ * Vai a base de dados ver todos os comentarios de uma respetiva loja
+ * 
+ */
 public class ComentarioDAO {
 
 	/**

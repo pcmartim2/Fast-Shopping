@@ -1,4 +1,4 @@
-package pt.iade.fastShopping.models.daos;
+package pt.iade.fastShopping.models;
 
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;

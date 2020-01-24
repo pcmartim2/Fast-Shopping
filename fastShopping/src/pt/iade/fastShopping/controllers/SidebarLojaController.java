@@ -4,18 +4,22 @@ import java.io.ByteArrayInputStream;
 import java.io.IOException;
 
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Alert.AlertType;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import pt.iade.fastShopping.WindowManager;
-import pt.iade.fastShopping.models.daos.DBConnector;
 import pt.iade.fastShopping.models.daos.FavoritoDAO;
 import pt.iade.fastShopping.models.daos.LojaDAO;
 
+
+/**
+ * Nesta classe as funcionalidades relacionadas ao SideBar vão estar aqui.
+ * Quando um utilizador entra numa das lojas vai reparar que no lado esquerdo 
+ * da aplicação vai ter um sidebar com as sequintes funcionalidades:
+ * adicionar e remover favorito da loja e adicionar um novo comentário da loja.
+ */
 public class SidebarLojaController {
 	
 	

@@ -18,6 +18,14 @@ import pt.iade.fastShopping.models.daos.DBConnector;
 import pt.iade.fastShopping.models.daos.FavoritoDAO;
 import pt.iade.fastShopping.models.daos.LojaDAO;
 
+
+/**
+ * Nesta classe as funcionalidades relacionadas ao Mapa das lojas vão estar aqui.
+ * Quando o utilizador clica numa das lojas que estão no mapa, vai abrir uma nova 
+ * janela onde vão aparecer todos os produtos dessa loja.
+ * O utilizador também poderá ver todas as lojas em que é favorito, ao clica numa delas
+ * vai abrir uma nova janela onde vai aparecer todos os produtos dessa loja.
+ */
 public class MapaScreenController {
 
 	

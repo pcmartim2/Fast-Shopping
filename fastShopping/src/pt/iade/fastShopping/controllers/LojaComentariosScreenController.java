@@ -8,9 +8,18 @@ import javafx.scene.control.TextArea;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import pt.iade.fastShopping.models.Comentarios;
+import pt.iade.fastShopping.models.Popups;
 import pt.iade.fastShopping.models.daos.ComentarioDAO;
-import pt.iade.fastShopping.models.daos.Popups;
 
+
+/**
+ * Nesta classe as funcionalidades relacionadas aos comentários da loja vão estar aqui.
+ * Assim que o utilizador clica para ver os comentários de uma certa loja, a aplicação 
+ * vai a base de dados ver todos os comentários da respetiva loja.
+ * O utilizador também pode adicionar um novo comentário na loja clicando no botão mais, 
+ * onde vai aparecer um campo para colocar o seu comentário, ao clicar no adiconar vai verificar
+ * se o campo está vazio, se não estiver vai adicionar um novo comentário na loja.
+ */
 public class LojaComentariosScreenController {
 	
 	/**

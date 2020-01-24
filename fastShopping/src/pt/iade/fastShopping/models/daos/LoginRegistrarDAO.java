@@ -4,6 +4,16 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+
+/**
+ * Nesta classe vão estar todos os metodos(queries) relacionados com o Login e Registo.
+ * Tem os seguintes metodos:
+ * Verificar se o utilizador já existe na base de dados
+ * adicionar um novo utilizador na base de dados
+ * ver o id de um respetivo utilizador
+ * verificar se o utilizador é admin
+ * 
+ */
 public class LoginRegistrarDAO {
 
 	/**

@@ -1,6 +1,7 @@
 package pt.iade.fastShopping.controllers;
 
 import javafx.event.ActionEvent;
+
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
@@ -9,6 +10,14 @@ import pt.iade.fastShopping.WindowManager;
 import pt.iade.fastShopping.models.daos.LoginRegistrarDAO;
 import pt.iade.fastShopping.models.daos.LojaDAO;
 
+
+/**
+ * Nesta classe as funcionalidades relacionadas ao Login e Registo vão estar aqui.
+ * Quando clica no Botão de entrar vai verificar se o nome do utilizador já existe na base de dados,
+ * se existir irá verificar se é um utilizador normal ou proprietário de alguma loja ou administrador.
+ * Consoante a sua categoria de utilizador vai entrar na sua respetiva janela.
+ *
+ */
 public class LoginUtilizadorController {
 
 	/**

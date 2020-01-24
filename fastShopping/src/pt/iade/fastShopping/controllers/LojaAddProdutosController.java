@@ -28,10 +28,18 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.stage.FileChooser;
 import pt.iade.fastShopping.WindowManager;
+import pt.iade.fastShopping.models.Popups;
 import pt.iade.fastShopping.models.Produto;
-import pt.iade.fastShopping.models.daos.Popups;
 import pt.iade.fastShopping.models.daos.ProdutoDAO;
 
+
+/**
+ * Nesta classe as funcionalidades relacionadas ao Painel do proprietário da loja vão estar aqui.
+ * Quando clica no botão de adicionar vai verificar se o utilizador preencheu os requisitos necessários
+ * para adicionar um novo produto na sua loja, o proprietario da loja vai precisar de colocar
+ * a imagem do produto, o respetivo preço unitário e a categoria do produto para conseguir
+ * adicionar um novo produto.
+ */
 public class LojaAddProdutosController {
 	
 	

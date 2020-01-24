@@ -8,6 +8,16 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import pt.iade.fastShopping.models.Favoritos;
 
+
+/**
+ * Nesta classe vão estar todos os metodos(queries) relacionados com os Favoritos.
+ * Tem os seguintes metodos:
+ * adicionar um novo favorito na base de dados
+ * remover um certo favorito da base de dados
+ * ver todos os favoritos de um certo utilizador
+ * ver os favoritos de uma certa loja
+ * 
+ */
 public class FavoritoDAO {
 
 	/**
