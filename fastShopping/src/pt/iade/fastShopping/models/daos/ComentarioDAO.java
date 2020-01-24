@@ -16,7 +16,7 @@ public class ComentarioDAO {
 	 */
 	public static void addComentario(String texto, int idLoja, int idUtilizador) {
 		try {
-			PreparedStatement statement2 = DBConnector.getConnection().prepareStatement("INSERT INTO Comentario (Texto, Loja_IdLoja, IdUtilizador) VALUES (?,?,?)");
+			PreparedStatement statement2 = DBConnector.getConnection().prepareStatement("INSERT INTO Comentario (Texto, Loja_IdLoja, Utilizador_IdUtilizador) VALUES (?,?,?)");
 			statement2.setString(1, texto);
 			statement2.setInt(2, idLoja);
 			statement2.setInt(3, idUtilizador);
@@ -35,7 +35,7 @@ public class ComentarioDAO {
 	public static void getComentariosLoja(int idLoja, ListView<String> listaComentarios) {
 		listaComentarios.getItems().clear();
 		try {
-			PreparedStatement statement = DBConnector.getConnection().prepareStatement("SELECT C.Texto, U.NomeUtilizador FROM Comentario C, Utilizador U WHERE Loja_IdLoja = '"+idLoja+"' and C.IdUtilizador = U.IdUtilizador");
+			PreparedStatement statement = DBConnector.getConnection().prepareStatement("SELECT C.Texto, U.NomeUtilizador FROM Comentario C, Utilizador U WHERE Loja_IdLoja = '"+idLoja+"' and C.Utilizador_IdUtilizador = U.IdUtilizador");
 			ResultSet results = statement.executeQuery();
 			while (results.next()) {
 				String texto = results.getString(1);

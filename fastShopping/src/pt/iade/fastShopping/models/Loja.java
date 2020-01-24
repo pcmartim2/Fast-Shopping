@@ -5,11 +5,11 @@ public class Loja {
 	private int idLoja;
 	private byte[] imagemLoja;
 	private String nomeLoja;
-	private Coordenadas coordenadas;
+	private String coordenadas;
 	private String proprietario;
 	private String estilo;
 
-	public Loja(int idLoja, byte[] imagemLoja, String nomeLoja, Coordenadas coordenadas, String proprietario, String estilo) {
+	public Loja(int idLoja, byte[] imagemLoja, String nomeLoja, String coordenadas, String proprietario, String estilo) {
 
 		this.idLoja = idLoja;
 		this.imagemLoja = imagemLoja;
@@ -28,7 +28,7 @@ public class Loja {
 		return imagemLoja;
 	}
 
-	public Coordenadas getCoordenadas() {
+	public String getCoordenadas() {
 		return coordenadas;
 	}
 

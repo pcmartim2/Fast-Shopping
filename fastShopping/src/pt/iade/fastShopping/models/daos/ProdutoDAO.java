@@ -107,7 +107,7 @@ public class ProdutoDAO {
 				String categoriaProduto = results.getString(4);
 				Double precoProduto = results.getDouble(5);
 
-				byte[] bytesImagem = DBConnector.getBytesFromInputStream(imagem);
+				byte[] bytesImagem = ImagemDAO.getBytesFromInputStream(imagem);
 
 				Produto.produtoCache.add(new Produto(idProduto, bytesImagem, nomeProduto, categoriaProduto, precoProduto));
 			}

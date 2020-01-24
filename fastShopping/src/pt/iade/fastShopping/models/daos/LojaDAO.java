@@ -90,31 +90,6 @@ public class LojaDAO {
 			e.printStackTrace();
 		}
 	}
-	
-	/**
-	 * Metodo para saber o id da loja atraves do nome da loja
-	 * @param nomeLoja nome da Loja
-	 * @return id da loja
-	 */
-	public static int getIdLoja(String nomeLoja) {
-		int idLoja = 0;
-		try {
-			//Vai verificar se o nome já existe na base de dados
-			PreparedStatement statement = DBConnector.getConnection().prepareStatement("SELECT IdLoja FROM Loja WHERE NomeLoja = '"+nomeLoja+"'");
-			ResultSet results = statement.executeQuery();
-			if (results.next()) {
-				idLoja = results.getInt(1);
-				
-			}
-			statement.close();
-			results.close();
-
-		}
-		catch (SQLException e) {
-			e.printStackTrace();
-		}
-		return idLoja;
-	}
 
 	/**
 	 * Metodo para o id do estilo atraves do nome do estilo

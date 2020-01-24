@@ -4,7 +4,10 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.scene.control.ListView;
+import pt.iade.fastShopping.models.Favoritos;
 
 public class FavoritoDAO {
 
@@ -47,16 +50,18 @@ public class FavoritoDAO {
 	 * @param idUser id do utilizador
 	 * @param viewFavoritos lista dos favoritos
 	 */
-	public static void getFavoritosUtilizador(int idUser, ListView<String> viewFavoritos) {
-		
-		viewFavoritos.getItems().clear();
+	public static ObservableList<Favoritos> getFavoritosUtilizador(int idUser) {
+		ObservableList<Favoritos> favoritosUtilizador = FXCollections.observableArrayList();
+		//viewFavoritos.getItems().clear();
 		
 		try {
-			PreparedStatement statement = DBConnector.getConnection().prepareStatement("SELECT NomeLoja FROM Favoritos F, Loja L WHERE L.IdLoja = F.fav_IdLoja and fav_IdUtilizador = '"+idUser+"'");
+			PreparedStatement statement = DBConnector.getConnection().prepareStatement("SELECT L.IdLoja, NomeLoja FROM Favoritos F, Loja L WHERE L.IdLoja = F.fav_IdLoja and fav_IdUtilizador = '"+idUser+"'");
 			ResultSet results = statement.executeQuery();
 			while (results.next()) {
-				String nomeLoja = results.getString(1);
-				viewFavoritos.getItems().add(nomeLoja);
+				int idLoja = results.getInt(1);
+				String nomeLoja = results.getString(2);
+				//viewFavoritos.getItems().add(nomeLoja);
+				favoritosUtilizador.add(new Favoritos(idLoja, nomeLoja));
 			}
 			statement.close();
 			results.close();
@@ -64,6 +69,7 @@ public class FavoritoDAO {
 		catch (SQLException ev) {
 			ev.printStackTrace();
 		}
+		return favoritosUtilizador;
 	}
 	
 	/**

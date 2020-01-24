@@ -7,11 +7,13 @@ import java.sql.SQLException;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import pt.iade.fastShopping.WindowManager;
+import pt.iade.fastShopping.models.Favoritos;
 import pt.iade.fastShopping.models.daos.DBConnector;
 import pt.iade.fastShopping.models.daos.FavoritoDAO;
 import pt.iade.fastShopping.models.daos.LojaDAO;
@@ -52,7 +54,7 @@ public class MapaScreenController {
 	 * ListView de todos os favoritos de um certo utilizador
 	 */
 	@FXML
-	private ListView<String> viewFavoritos;
+	private ListView<Favoritos> viewFavoritos;
 
 	/**
 	 * Quando o fxml que corresponde a este controlador vai executar este codigo quando incia.
@@ -108,7 +110,9 @@ public class MapaScreenController {
 
 	        @Override
 	        public void handle(MouseEvent event) {
-	            idLoja = LojaDAO.getIdLoja(viewFavoritos.getSelectionModel().getSelectedItem());
+	        	//Vai ver qual o id da loja onde o utilizador clicou na listview dos favoritos
+	        	Favoritos selected = viewFavoritos.getSelectionModel().getSelectedItem();
+	        	idLoja = selected.getIdLoja();
 				WindowManager.openSidebarLojaWindow();
 	        }
 	    });
@@ -145,8 +149,17 @@ public class MapaScreenController {
 			viewFavoritos.setVisible(visivel);
 			viewFavoritos.setDisable(disable);
 			//Mostrar todos os favoritos do utilizador
-			FavoritoDAO.getFavoritosUtilizador(LoginUtilizadorController.IdUser, viewFavoritos);
-
+			//Vai colocar a observableList na lisview
+			viewFavoritos.getItems().addAll(FavoritoDAO.getFavoritosUtilizador(LoginUtilizadorController.IdUser));
+			
+			//configurar como a exibição em lista é exibida, ou seja vai só aparecer o nome da loja
+			viewFavoritos.setCellFactory(lv -> new ListCell<Favoritos>() {
+			    @Override
+			    public void updateItem(Favoritos favorito, boolean empty) {
+			        super.updateItem(favorito, empty) ;
+			        setText(empty ? null : favorito.getNomeLoja());
+			    }
+			});
 		}
 	}
 
