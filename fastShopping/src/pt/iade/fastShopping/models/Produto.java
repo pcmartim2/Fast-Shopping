@@ -1,12 +1,8 @@
 package pt.iade.fastShopping.models;
 
 import java.io.ByteArrayInputStream;
-import java.math.RoundingMode;
 import java.text.DecimalFormat;
-import java.util.ArrayList;
 
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Pos;
@@ -22,17 +18,10 @@ import javafx.util.Callback;
 import pt.iade.fastShopping.controllers.LoginUtilizadorController;
 import pt.iade.fastShopping.controllers.MapaScreenController;
 import pt.iade.fastShopping.controllers.SidebarLojaController;
-import pt.iade.fastShopping.models.daos.DBConnector;
 import pt.iade.fastShopping.models.daos.ProdutoDAO;
 
 
 public class Produto {
-
-	/**
-	 * Array onde vai ficar armazenado os produtos que estao na base de dados para conseguir
-	 * colocar na listview
-	 */
-	public static ArrayList<Produto> produtoCache = new ArrayList<Produto>();
 	
 	private int idProduto;
 	private byte[] imagemProduto;
@@ -80,11 +69,8 @@ public class Produto {
 	public static void getProdutos(int lojaid, ListView<Produto> listViewProdutos, ListView<String> listViewCompras, String categoria, Label precoTotal) {
 		
 		listViewProdutos.getItems().clear();
-		Produto.produtoCache.clear();
 		
-		ProdutoDAO.loadProdutosCategoria(MapaScreenController.idLoja, categoria);
-		
-		ObservableList<Produto> oListStavaka = FXCollections.observableArrayList(Produto.produtoCache);
+		listViewProdutos.getItems().addAll(ProdutoDAO.loadProdutosCategoria(MapaScreenController.idLoja, categoria));
 		
 		listViewProdutos.setCellFactory(new Callback<ListView<Produto>,ListCell<Produto>>() {
 
@@ -142,7 +128,6 @@ public class Produto {
 			}
 			
 		});
-		listViewProdutos.setItems(oListStavaka);
 	}
 	
 	/**
@@ -152,9 +137,7 @@ public class Produto {
 	 */
 	public static void getProdutosProprietario(int lojaid, ListView<Produto> listViewProdutos) {
 		
-		ProdutoDAO.loadProdutosLoja(lojaid);
-		
-		ObservableList<Produto> oListStavaka = FXCollections.observableArrayList(Produto.produtoCache);
+		listViewProdutos.getItems().addAll(ProdutoDAO.loadProdutosLoja(lojaid));
 
 		listViewProdutos.setCellFactory(new Callback<ListView<Produto>,ListCell<Produto>>() {
 
@@ -201,7 +184,6 @@ public class Produto {
 			}
 
 		});
-		listViewProdutos.setItems(oListStavaka);
 	}
 	
 	//Metodo para remover item do carrinho de compras
@@ -251,13 +233,6 @@ public class Produto {
 		      @Override public void handle(ActionEvent event) {
 		      final int selectedIdx = listViewProdutos.getSelectionModel().getSelectedIndex();
 		      if (selectedIdx != -1) {
-		
-		    	  //Saber o ID do produto
-		    	  int value = listViewProdutos.getSelectionModel().getSelectedItem().getIdProduto();
-		    	  
-		    	  //Remover produto do Array
-		    	  int id = value-1;
-		    	  produtoCache.remove(id);
 		    	  
 		    	  //Remover o produto da base de dados
 		    	  ProdutoDAO.deleteProdutoLoja(LoginUtilizadorController.lojaID, produtoId);

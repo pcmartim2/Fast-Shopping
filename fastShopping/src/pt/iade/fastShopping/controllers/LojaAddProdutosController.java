@@ -22,7 +22,6 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.FileChooser;
 import pt.iade.fastShopping.WindowManager;
 import pt.iade.fastShopping.models.Produto;
-import pt.iade.fastShopping.models.daos.DBConnector;
 import pt.iade.fastShopping.models.daos.ProdutoDAO;
 
 public class LojaAddProdutosController {
@@ -77,9 +76,7 @@ public class LojaAddProdutosController {
 		preco_Produto.setEditable(true);
 	
 		//Adicionar as Categorias na comboBox da Categoria
-		ProdutoDAO.getCategoriasProdutos(categoriaProduto);
-		
-		Produto.produtoCache.clear();
+		categoriaProduto.setItems(ProdutoDAO.getCategoriasProdutos());
 		
 		Produto.getProdutosProprietario(LoginUtilizadorController.lojaID, listViewProdutos);
 		

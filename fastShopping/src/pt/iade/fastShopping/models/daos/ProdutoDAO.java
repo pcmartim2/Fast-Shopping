@@ -9,7 +9,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
-import javafx.scene.control.ChoiceBox;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import pt.iade.fastShopping.models.Produto;
 
 public class ProdutoDAO {
@@ -36,7 +37,8 @@ public class ProdutoDAO {
 			ResultSet rs = statement2.getGeneratedKeys();
 			if (rs.next()) {
 					
-				PreparedStatement statement5 = DBConnector.getConnection().prepareStatement("SELECT IdCategoria FROM Categoria WHERE nomeCategoria = '"+categoria+"'");
+				PreparedStatement statement5 = DBConnector.getConnection().prepareStatement("SELECT IdCategoria FROM Categoria WHERE nomeCategoria = ?");
+				statement5.setString(1, categoria);
 				ResultSet results = statement5.executeQuery();
 				if (results.next()) {
 					int idCategoria = results.getInt(1);
@@ -61,13 +63,19 @@ public class ProdutoDAO {
 	}
 	
 	/**
-	 * Metodo para guardar os produtos de uma certa loja e categoria no array dos produtos
+	 * Metodo que vai a base de dados ver todos os produtos de uma certa loja e categoria 
+	 * e vai colocar os produtos numa observableList
 	 * @param idLoja id da loja
 	 * @param categoria categoria do produto
+	 * @return observableList de Produtos
 	 */
-	public static void loadProdutosCategoria(int idLoja, String categoria) {	
+	public static ObservableList<Produto> loadProdutosCategoria(int idLoja, String categoria) {	
+		ObservableList<Produto> produtos = FXCollections.observableArrayList();
 		try {
-			PreparedStatement statement = DBConnector.getConnection().prepareStatement("select IdProduto, NomeProduto, P.Imagem, C.nomeCategoria, Preco from Produto P, Produto_has_Categoria H, Loja L, Loja_has_Produto A, Categoria C where L.IdLoja = '"+idLoja+"' and A.Loja_IdLoja = '"+idLoja+"' and P.IdProduto = H.Produto_IdProduto and P.IdProduto = A.Produto_IdProduto and C.nomeCategoria = '"+categoria+"' and H.Categoria_IdCategoria = C.IDCategoria");
+			PreparedStatement statement = DBConnector.getConnection().prepareStatement("select IdProduto, NomeProduto, P.Imagem, C.nomeCategoria, Preco from Produto P, Produto_has_Categoria H, Loja L, Loja_has_Produto A, Categoria C where L.IdLoja = ? and A.Loja_IdLoja = ? and P.IdProduto = H.Produto_IdProduto and P.IdProduto = A.Produto_IdProduto and C.nomeCategoria = ? and H.Categoria_IdCategoria = C.IDCategoria");
+			statement.setInt(1, idLoja);
+			statement.setInt(2, idLoja);
+			statement.setString(3, categoria);
 			ResultSet results = statement.executeQuery();
 			while (results.next()) {
 				int idProduto = results.getInt(1);
@@ -78,7 +86,7 @@ public class ProdutoDAO {
 
 				byte[] bytesImagem = ImagemDAO.getBytesFromInputStream(imagem);
 
-				Produto.produtoCache.add(new Produto(idProduto, bytesImagem, nomeProduto, categoriaProduto, precoProduto));
+				produtos.add(new Produto(idProduto, bytesImagem, nomeProduto, categoriaProduto, precoProduto));
 			}
 			statement.close();
 			results.close();
@@ -90,15 +98,21 @@ public class ProdutoDAO {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		return produtos;
 	}
 	
 	/**
-	 * Metodo para guardar todos os produtos no array de uma certa loja 
+	 * Metodo que vai a base de dados ver todos os produtos de uma certa loja
+	 * e vai colocar os produtos numa observableList
 	 * @param idLoja id da loja
+	 * @return observableList de produtos
 	 */
-	public static void loadProdutosLoja(int idLoja) {	
+	public static ObservableList<Produto> loadProdutosLoja(int idLoja) {	
+		ObservableList<Produto> produtos = FXCollections.observableArrayList();
 		try {
-			PreparedStatement statement = DBConnector.getConnection().prepareStatement("select IdProduto, NomeProduto, P.Imagem, C.nomeCategoria, Preco from Produto P, Produto_has_Categoria H, Loja L, Loja_has_Produto A, Categoria C where L.IdLoja = '"+idLoja+"' and A.Loja_IdLoja = '"+idLoja+"' and P.IdProduto = H.Produto_IdProduto and P.IdProduto = A.Produto_IdProduto and H.Categoria_IdCategoria = C.IDCategoria");
+			PreparedStatement statement = DBConnector.getConnection().prepareStatement("select IdProduto, NomeProduto, P.Imagem, C.nomeCategoria, Preco from Produto P, Produto_has_Categoria H, Loja L, Loja_has_Produto A, Categoria C where L.IdLoja = ? and A.Loja_IdLoja = ? and P.IdProduto = H.Produto_IdProduto and P.IdProduto = A.Produto_IdProduto and H.Categoria_IdCategoria = C.IDCategoria");
+			statement.setInt(1, idLoja);
+			statement.setInt(2, idLoja);
 			ResultSet results = statement.executeQuery();
 			while (results.next()) {
 				int idProduto = results.getInt(1);
@@ -109,7 +123,7 @@ public class ProdutoDAO {
 
 				byte[] bytesImagem = ImagemDAO.getBytesFromInputStream(imagem);
 
-				Produto.produtoCache.add(new Produto(idProduto, bytesImagem, nomeProduto, categoriaProduto, precoProduto));
+				produtos.add(new Produto(idProduto, bytesImagem, nomeProduto, categoriaProduto, precoProduto));
 			}
 			statement.close();
 			results.close();
@@ -121,12 +135,15 @@ public class ProdutoDAO {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		return produtos;
 	}
 	
 	public static void deleteProdutoLoja(int idLoja, int idProduto) {
 		
 		try {
-			PreparedStatement statement2 = DBConnector.getConnection().prepareStatement("DELETE FROM Loja_has_Produto WHERE Loja_IdLoja = '"+idLoja+"' and Produto_IdProduto = '"+idProduto+"'");
+			PreparedStatement statement2 = DBConnector.getConnection().prepareStatement("DELETE FROM Loja_has_Produto WHERE Loja_IdLoja = ? and Produto_IdProduto = ?");
+			statement2.setInt(1, idLoja);
+			statement2.setInt(2, idProduto);
 			statement2.executeUpdate();
 		}
 		catch (SQLException ev) {
@@ -135,18 +152,22 @@ public class ProdutoDAO {
 	}
 
 	/**
-	 * Metodo para ver quais os produtos que a loja tem e ver as categorias dos produtos para adicionar na comboBox
+	 * Metodo para ver quais os produtos que a loja tem e ver as categorias dos produtos
+	 * e vai adicionar numa arraylist todos as categorias sem estarem repetidas.
 	 * @param idLoja id da loja
-	 * @param categorias comboBox onde vai ser adicionado as categorias que a loja tem
+	 * @return ArrayList de categorias de produtos
 	 */
-	public static void getCategoriasProdutosLoja(int idLoja, ArrayList<String> categorias) {	
+	public static ArrayList<String> getCategoriasProdutosLoja(int idLoja) {	
+		ArrayList<String> cateogirasProdutos = new ArrayList<String>();
 		try {
 
-			PreparedStatement statement = DBConnector.getConnection().prepareStatement("select distinct nomeCategoria from Categoria C, Loja L, Loja_has_Produto P, Produto_has_Categoria A, Produto K where L.IdLoja = '"+idLoja+"' and P.Loja_IdLoja = '"+idLoja+"' and C.IdCategoria = A.Categoria_IdCategoria and K.IdProduto = P.Produto_IdProduto and K.IdProduto = A.Produto_IdProduto");
+			PreparedStatement statement = DBConnector.getConnection().prepareStatement("select distinct nomeCategoria from Categoria C, Loja L, Loja_has_Produto P, Produto_has_Categoria A, Produto K where L.IdLoja = ? and P.Loja_IdLoja = ? and C.IdCategoria = A.Categoria_IdCategoria and K.IdProduto = P.Produto_IdProduto and K.IdProduto = A.Produto_IdProduto");
+			statement.setInt(1, idLoja);
+			statement.setInt(2, idLoja);
 			ResultSet results = statement.executeQuery();
 			while (results.next()) {
 				String categoria = results.getString(1);
-				categorias.add(categoria);
+				cateogirasProdutos.add(categoria);
 			}
 			statement.close();
 			results.close();
@@ -155,19 +176,22 @@ public class ProdutoDAO {
 		catch (SQLException ev) {
 			ev.printStackTrace();
 		}
+		return cateogirasProdutos;
 	}
 	
 	/**
-	 * Metodo para adicionar as categorias dos produtos na comboBox
-	 * @param categoriaProduto comboBox das categorias do produto
+	 * Metodo que vai a base de dados ver todos as categorias que estão na base de dados 
+	 * e vai colocar numa observableList.
+	 * @return ObservableList de categorias
 	 */
-	public static void getCategoriasProdutos(ChoiceBox<String> categoriaProduto) {
+	public static ObservableList<String> getCategoriasProdutos() {
+		ObservableList<String> categoriasProdutos = FXCollections.observableArrayList();
 		try {
 			PreparedStatement statement = DBConnector.getConnection().prepareStatement("SELECT nomeCategoria FROM Categoria");
 			ResultSet results = statement.executeQuery();
 			while (results.next()) {
 				String nomeCategoria = results.getString(1);
-				categoriaProduto.getItems().add(nomeCategoria);
+				categoriasProdutos.add(nomeCategoria);
 			}
 			statement.close();
 			results.close();
@@ -175,5 +199,6 @@ public class ProdutoDAO {
 		catch (SQLException ev) {
 			ev.printStackTrace();
 		}
+		return categoriasProdutos;
 	}
 }

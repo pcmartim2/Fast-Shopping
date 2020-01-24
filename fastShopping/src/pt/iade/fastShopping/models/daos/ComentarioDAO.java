@@ -4,7 +4,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import javafx.scene.control.ListView;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import pt.iade.fastShopping.models.Comentarios;
 
 public class ComentarioDAO {
 
@@ -28,19 +30,20 @@ public class ComentarioDAO {
 	}
 	
 	/**
-	 * Metodo para colocar todos os comentarios na listview de uma certa loja
+	 * Metodo que vai a base de dados ver todos os comentarios que uma certa loja tem.
 	 * @param idLoja id da loja
-	 * @param listaComentarios lista dos comentarios
+	 * @return observableList de comentarios
 	 */
-	public static void getComentariosLoja(int idLoja, ListView<String> listaComentarios) {
-		listaComentarios.getItems().clear();
+	public static ObservableList<Comentarios> getComentariosLoja(int idLoja) {
+		ObservableList<Comentarios> comentariosLoja = FXCollections.observableArrayList();
 		try {
-			PreparedStatement statement = DBConnector.getConnection().prepareStatement("SELECT C.Texto, U.NomeUtilizador FROM Comentario C, Utilizador U WHERE Loja_IdLoja = '"+idLoja+"' and C.Utilizador_IdUtilizador = U.IdUtilizador");
+			PreparedStatement statement = DBConnector.getConnection().prepareStatement("SELECT C.Texto, U.NomeUtilizador FROM Comentario C, Utilizador U WHERE Loja_IdLoja = ? and C.Utilizador_IdUtilizador = U.IdUtilizador");
+			statement.setInt(1, idLoja);
 			ResultSet results = statement.executeQuery();
 			while (results.next()) {
 				String texto = results.getString(1);
 				String nomeUtilizador = results.getString(2);
-				listaComentarios.getItems().add(nomeUtilizador + "\n" + texto);
+				comentariosLoja.add(new Comentarios(nomeUtilizador, texto));
 				
 			}
 			statement.close();
@@ -49,5 +52,6 @@ public class ComentarioDAO {
 		catch (SQLException ev) {
 			ev.printStackTrace();
 		}
+		return comentariosLoja;
 	}
 }

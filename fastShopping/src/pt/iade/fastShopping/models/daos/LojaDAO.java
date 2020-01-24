@@ -99,7 +99,8 @@ public class LojaDAO {
 	public static int getIDEstilo(String nomeEstilo) {	
 		int idEstilo = 0;
 		try {
-			PreparedStatement statement = DBConnector.getConnection().prepareStatement("SELECT IdEstilo FROM EstiloLoja WHERE NomeEstilo = '"+ nomeEstilo+"'");
+			PreparedStatement statement = DBConnector.getConnection().prepareStatement("SELECT IdEstilo FROM EstiloLoja WHERE NomeEstilo = ?");
+			statement.setString(1, nomeEstilo);
 			ResultSet results = statement.executeQuery();
 			while (results.next()) {
 				idEstilo = results.getInt(1);
@@ -165,7 +166,8 @@ public class LojaDAO {
 	public static int getLojaId(String proprietario) {
 		int idLoja = 0;
 		try {
-			PreparedStatement statement = DBConnector.getConnection().prepareStatement("SELECT IdLoja FROM Loja WHERE Proprietario = '"+proprietario+"'");
+			PreparedStatement statement = DBConnector.getConnection().prepareStatement("SELECT IdLoja FROM Loja WHERE Proprietario = ?");
+			statement.setString(1, proprietario);
 			ResultSet results = statement.executeQuery();
 			if (results.next()) {
 				idLoja = results.getInt(1);
@@ -188,7 +190,8 @@ public class LojaDAO {
 	public static boolean verificarDonoLoja(String proprietario) {
 		boolean loja = false;
 		try {
-			PreparedStatement statement = DBConnector.getConnection().prepareStatement("SELECT IdLoja FROM Loja WHERE Proprietario = '"+proprietario+"'");
+			PreparedStatement statement = DBConnector.getConnection().prepareStatement("SELECT IdLoja FROM Loja WHERE Proprietario = ?");
+			statement.setString(1, proprietario);
 			ResultSet results = statement.executeQuery();
 			if (results.next()) {
 				loja = true;

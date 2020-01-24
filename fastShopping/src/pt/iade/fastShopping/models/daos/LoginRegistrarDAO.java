@@ -15,7 +15,8 @@ public class LoginRegistrarDAO {
 		boolean verificar = false;
 		try {
 			//Vai verificar se o nome já existe na base de dados
-			PreparedStatement statement = DBConnector.getConnection().prepareStatement("SELECT IdUtilizador FROM Utilizador WHERE NomeUtilizador = '"+utilizador+"'");
+			PreparedStatement statement = DBConnector.getConnection().prepareStatement("SELECT IdUtilizador FROM Utilizador WHERE NomeUtilizador = ?");
+			statement.setString(1, utilizador);
 			ResultSet results = statement.executeQuery();
 			//se o utilizador existir na base dedados 
 			if (results.next()) {
@@ -57,7 +58,8 @@ public class LoginRegistrarDAO {
 	public static int getIdUtilizador(String nomeUser) {
 		int idUtilizador = 0;
 		try {
-			PreparedStatement statement = DBConnector.getConnection().prepareStatement("SELECT IdUtilizador FROM Utilizador WHERE NomeUtilizador = '"+nomeUser+"'");
+			PreparedStatement statement = DBConnector.getConnection().prepareStatement("SELECT IdUtilizador FROM Utilizador WHERE NomeUtilizador = ?");
+			statement.setString(1, nomeUser);
 			ResultSet results = statement.executeQuery();
 			while (results.next()) {
 				idUtilizador = results.getInt(1);

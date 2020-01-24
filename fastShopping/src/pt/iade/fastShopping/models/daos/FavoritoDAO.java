@@ -6,7 +6,6 @@ import java.sql.SQLException;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.scene.control.ListView;
 import pt.iade.fastShopping.models.Favoritos;
 
 public class FavoritoDAO {
@@ -37,7 +36,9 @@ public class FavoritoDAO {
 	public static void removeFavoritoUtilizador(int idUser, int idLoja) {
 
 		try {
-			PreparedStatement statement2 = DBConnector.getConnection().prepareStatement("DELETE FROM Favoritos WHERE fav_IdLoja = '"+idLoja+"' and fav_IdUtilizador = '"+idUser+"'");
+			PreparedStatement statement2 = DBConnector.getConnection().prepareStatement("DELETE FROM Favoritos WHERE fav_IdLoja = ? and fav_IdUtilizador = ?");
+			statement2.setInt(1, idLoja);
+			statement2.setInt(2, idUser);
 			statement2.executeUpdate();
 		}
 		catch (SQLException ev) {
@@ -46,13 +47,12 @@ public class FavoritoDAO {
 	}
 	
 	/**
-	 * Metodo para mostrar todos os favoritos de um certo utilizador na listview dos favoritos
+	 * Metodo que vai a base de dados ver todos os favoritos de um certo utilizador.
 	 * @param idUser id do utilizador
-	 * @param viewFavoritos lista dos favoritos
+	 * @return observableList de favoritos
 	 */
 	public static ObservableList<Favoritos> getFavoritosUtilizador(int idUser) {
 		ObservableList<Favoritos> favoritosUtilizador = FXCollections.observableArrayList();
-		//viewFavoritos.getItems().clear();
 		
 		try {
 			PreparedStatement statement = DBConnector.getConnection().prepareStatement("SELECT L.IdLoja, NomeLoja FROM Favoritos F, Loja L WHERE L.IdLoja = F.fav_IdLoja and fav_IdUtilizador = '"+idUser+"'");
@@ -60,7 +60,6 @@ public class FavoritoDAO {
 			while (results.next()) {
 				int idLoja = results.getInt(1);
 				String nomeLoja = results.getString(2);
-				//viewFavoritos.getItems().add(nomeLoja);
 				favoritosUtilizador.add(new Favoritos(idLoja, nomeLoja));
 			}
 			statement.close();
@@ -81,7 +80,9 @@ public class FavoritoDAO {
 	public static boolean getFavoritoLoja(int idLoja, int idUser) {
 		boolean fav = false;
 		try {
-			PreparedStatement statement = DBConnector.getConnection().prepareStatement("SELECT fav_IdLoja FROM Favoritos WHERE fav_IdUtilizador = '"+idUser+"' and fav_IdLoja = '"+idLoja+"'");
+			PreparedStatement statement = DBConnector.getConnection().prepareStatement("SELECT fav_IdLoja FROM Favoritos WHERE fav_IdUtilizador = ? and fav_IdLoja = ?");
+			statement.setInt(1, idUser);
+			statement.setInt(2, idLoja);
 			ResultSet results = statement.executeQuery();
 			while (results.next()) {
 				fav = true;

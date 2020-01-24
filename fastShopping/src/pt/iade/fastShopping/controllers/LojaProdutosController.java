@@ -10,7 +10,6 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import pt.iade.fastShopping.models.Produto;
-import pt.iade.fastShopping.models.daos.DBConnector;
 import pt.iade.fastShopping.models.daos.ProdutoDAO;
 
 public class LojaProdutosController {
@@ -85,7 +84,7 @@ public class LojaProdutosController {
 		});
 		
 		//ver os produtos que a loja tem para ver que categorias precisa de colocar na loja
-		ProdutoDAO.getCategoriasProdutosLoja(MapaScreenController.idLoja, categorias);
+		categorias.addAll(ProdutoDAO.getCategoriasProdutosLoja(MapaScreenController.idLoja));
 		
 		//Adicionar as Categorias na comboBox da Categoria
     	for (String categoria : categorias) {

@@ -2,12 +2,13 @@ package pt.iade.fastShopping.controllers;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextArea;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import pt.iade.fastShopping.models.Comentarios;
 import pt.iade.fastShopping.models.daos.ComentarioDAO;
-import pt.iade.fastShopping.models.daos.DBConnector;
 
 public class LojaComentariosScreenController {
 	
@@ -15,7 +16,7 @@ public class LojaComentariosScreenController {
 	 * Listview de todos os comentarios da loja
 	 */
 	@FXML
-	private ListView<String> comentarioList;
+	private ListView<Comentarios> comentarioList;
 
 	/**
 	 * Zona para adicionar um novo comentario
@@ -37,9 +38,9 @@ public class LojaComentariosScreenController {
 	 */
 	@FXML
 	private void initialize() {
-		//Vai colocar os comentarios existentes da base de dados da loja que o utilizador estiver na listview
-		ComentarioDAO.getComentariosLoja(MapaScreenController.idLoja, comentarioList);
 		
+		//Vai colocar os comentarios existentes da base de dados da loja que o utilizador estiver na listview
+		listViewComentarios();
 	}
 
 	/**
@@ -82,8 +83,10 @@ public class LojaComentariosScreenController {
 			
 			backgroudEnviarComentario.setVisible(false);
 			
-			//Vai atualizar a listview com o comentario
-			ComentarioDAO.getComentariosLoja(MapaScreenController.idLoja, comentarioList);
+			//Atualizar listview comentarios
+			listViewComentarios();
+			
+			
 			//Mensagem que consegiu enviar o comentario
 			SidebarLojaController.warningDialog("Comentario enviado!", "O comentario foi enviado com sucesso!");
 
@@ -92,6 +95,26 @@ public class LojaComentariosScreenController {
 		else {
 			SidebarLojaController.warningDialog("Erro ao enviar comentario!", "Por preencha o texto!");
 		}
+	}
+	
+	/**
+	 * Atualizar ListView com os comentarios
+	 * Metodo criado para não haver codigo duplicado
+	 */
+	private void listViewComentarios() {
+		comentarioList.getItems().clear();
+		//Vai colocar os comentarios existentes da base de dados da loja que o utilizador estiver na listview
+		comentarioList.getItems().addAll(ComentarioDAO.getComentariosLoja(MapaScreenController.idLoja));
+		
+		//configurar como a exibição em lista é exibida, ou seja vai só aparecer o 
+		//nome do utilizador e o respetivo comentario
+		comentarioList.setCellFactory(lv -> new ListCell<Comentarios>() {
+		    @Override
+		    public void updateItem(Comentarios comentario, boolean empty) {
+		        super.updateItem(comentario, empty) ;
+		        setText(empty ? null : comentario.getNomeUtilizador() + "\n" + comentario.getComentario());
+		    }
+		});
 	}
 
 }

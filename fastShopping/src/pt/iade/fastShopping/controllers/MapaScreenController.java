@@ -111,8 +111,7 @@ public class MapaScreenController {
 	        @Override
 	        public void handle(MouseEvent event) {
 	        	//Vai ver qual o id da loja onde o utilizador clicou na listview dos favoritos
-	        	Favoritos selected = viewFavoritos.getSelectionModel().getSelectedItem();
-	        	idLoja = selected.getIdLoja();
+	        	idLoja = viewFavoritos.getSelectionModel().getSelectedItem().getIdLoja();
 				WindowManager.openSidebarLojaWindow();
 	        }
 	    });
@@ -148,6 +147,9 @@ public class MapaScreenController {
 
 			viewFavoritos.setVisible(visivel);
 			viewFavoritos.setDisable(disable);
+			
+			//Limpar listview antes de adiconar
+			viewFavoritos.getItems().clear();
 			//Mostrar todos os favoritos do utilizador
 			//Vai colocar a observableList na lisview
 			viewFavoritos.getItems().addAll(FavoritoDAO.getFavoritosUtilizador(LoginUtilizadorController.IdUser));
