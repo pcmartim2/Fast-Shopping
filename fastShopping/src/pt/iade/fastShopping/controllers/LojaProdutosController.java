@@ -23,6 +23,7 @@ import javafx.scene.layout.HBox;
 import pt.iade.fastShopping.models.CarrinhoCompras;
 import pt.iade.fastShopping.models.Popups;
 import pt.iade.fastShopping.models.Produto;
+import pt.iade.fastShopping.models.daos.EncomendaDAO;
 import pt.iade.fastShopping.models.daos.ProdutoDAO;
 
 
@@ -261,5 +262,36 @@ public class LojaProdutosController {
 	    else {
 	    	Popups.dialogError("Error remover", "Selecione um produto do carrinho para ser removido!");
 	    }
+    }
+	
+	/**
+	 * O utilizador ao clicar no botao de comprar vai verificar se a lista de compras não vazia, se não estiver
+	 * vazia vai a base de dados ver qual o Ultimo valor de encomenda e vai adicionar mais um. 
+	 * Vai enviar a informação de cada produto e vai limpar a observableList do carrinhoProdutos e da listview.
+	 * @param event ao clicar no botao
+	 */
+	@FXML
+    void comprar(ActionEvent event) {
+		//Verifica se a lista de compras nao esta vazia
+		if (!carrinhoProdutos.isEmpty()) {
+			
+			int maxNumEncomenda = EncomendaDAO.maxNumEncomenda();
+			
+			for (int i = 0; i < carrinhoProdutos.size(); i++) {
+				
+				int idProduto = carrinhoProdutos.get(i).getIdProduto();
+				int quantidadeProduto = carrinhoProdutos.get(i).getQuantidadeProduto();
+				EncomendaDAO.addEncomenda(maxNumEncomenda, idProduto, quantidadeProduto, MapaScreenController.idLoja, LoginUtilizadorController.IdUser);
+				
+			}
+			carrinhoProdutos.clear();
+			listViewCompras.getItems().clear();
+			Popups.dialogInformation("Compra", "Compra efetuada com sucesso! \n" + "Numero encomenda: " + maxNumEncomenda + "\n" + "Data Entrega: " + EncomendaDAO.dataEntregaEncomenda(maxNumEncomenda));
+			
+			
+		}
+		else {
+			Popups.dialogError("Erro Comprar", "Nao existe nenhum produto na lista de compras!");
+		}
     }
 }
