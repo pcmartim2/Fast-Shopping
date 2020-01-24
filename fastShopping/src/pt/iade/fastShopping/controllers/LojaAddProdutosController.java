@@ -1,6 +1,7 @@
 package pt.iade.fastShopping.controllers;
 
 import java.awt.image.BufferedImage;
+import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
@@ -9,8 +10,13 @@ import javax.imageio.ImageIO;
 
 import javafx.embed.swing.SwingFXUtils;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.geometry.Pos;
+import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.Label;
+import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.control.Spinner;
 import javafx.scene.control.SpinnerValueFactory;
@@ -19,9 +25,11 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.HBox;
 import javafx.stage.FileChooser;
 import pt.iade.fastShopping.WindowManager;
 import pt.iade.fastShopping.models.Produto;
+import pt.iade.fastShopping.models.daos.Popups;
 import pt.iade.fastShopping.models.daos.ProdutoDAO;
 
 public class LojaAddProdutosController {
@@ -78,7 +86,8 @@ public class LojaAddProdutosController {
 		//Adicionar as Categorias na comboBox da Categoria
 		categoriaProduto.setItems(ProdutoDAO.getCategoriasProdutos());
 		
-		Produto.getProdutosProprietario(LoginUtilizadorController.lojaID, listViewProdutos);
+		//Adiciona todos os produtos que a loja tem na listview
+		produtosLoja(LoginUtilizadorController.lojaID);
 		
 	}
 
@@ -146,7 +155,12 @@ public class LojaAddProdutosController {
 			
 			//Atualizar ListView
 			listViewProdutos.getItems().clear();
-			Produto.getProdutosProprietario(LoginUtilizadorController.lojaID, listViewProdutos);
+			produtosLoja(LoginUtilizadorController.lojaID);
+			
+			Popups.dialogInformation("Produto adicionado", "Produto adicionado com sucesso na Loja!");
+		}
+		else {
+			Popups.dialogError("Erro adicionar", "Antes de adiconar o produto na loja verifique se já preencheu tudo!");
 		}
     }
 
@@ -160,5 +174,75 @@ public class LojaAddProdutosController {
 		if (event.getButton() == MouseButton.PRIMARY) {
 			WindowManager.openLoginWindow();
 		}
+	}
+	
+	/**
+	 * Metodo para listar na listview todos os produtos correspondente a respetiva loja do proprietario.
+	 * @param lojaid id da loja
+	 */
+	private void produtosLoja(int lojaid) {
+		
+		listViewProdutos.getItems().addAll(ProdutoDAO.loadProdutosLoja(lojaid));
+
+		listViewProdutos.setCellFactory(lv -> new ListCell<Produto>() {
+		    @Override
+		    public void updateItem(Produto produto, boolean empty) {
+		        super.updateItem(produto, empty) ;
+		       
+		        Button actionBtn = new Button("Remover");
+				actionBtn.setOnAction(new EventHandler<ActionEvent>() {
+					@Override
+					public void handle(ActionEvent event) {
+
+						removeItemLoja(actionBtn, produto.getIdProduto());
+
+					}
+				});
+
+				if (produto != null) {
+					Image img = new Image(new ByteArrayInputStream(produto.getImagemProduto()));
+					ImageView imgview = new ImageView(img);
+					imgview.setFitHeight(50);
+					imgview.setFitWidth(50);
+
+					// Create a HBox to hold our displayed value
+					HBox hBox = new HBox(5);
+					hBox.setAlignment(Pos.CENTER_LEFT);
+
+					// Add the values from our piece to the HBox
+					hBox.getChildren().addAll(
+							imgview,
+							new Label("ID:" + produto.getIdProduto() + " Nome: " + produto.getNomeProduto() + " Categoria: " + produto.getCategoria() + " Preço: " + produto.getPrecoProduto() + "€ /uni "), actionBtn);
+
+					// Set the HBox as the display
+					setGraphic(hBox);
+
+				}
+		    }
+		});
+	}
+	
+	/**
+	 * Metodo para remover o produto da loja do proprietario
+	 * @param remover button de remover
+	 * @param produtoId id do produto selecionado
+	 */
+	private void removeItemLoja(Button remover, int produtoId) {
+		
+		remover.setOnAction(new EventHandler<ActionEvent>() {
+		      @Override public void handle(ActionEvent event) {
+		      final int selectedIdx = listViewProdutos.getSelectionModel().getSelectedIndex();
+		      if (selectedIdx != -1) {
+		    	  
+		    	  //Remover o produto da base de dados
+		    	  ProdutoDAO.deleteProdutoLoja(LoginUtilizadorController.lojaID, produtoId);
+		    	  
+		    	  //Remove item da listview
+		    	  listViewProdutos.getItems().remove(selectedIdx);
+		    	 
+		    	  Popups.dialogInformation("Produto removido!", "Produto removido da loja com sucesso!");
+		      }
+		}
+	});
 	}
 }

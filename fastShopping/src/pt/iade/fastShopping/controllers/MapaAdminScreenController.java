@@ -27,6 +27,7 @@ import javafx.stage.FileChooser;
 import pt.iade.fastShopping.WindowManager;
 import pt.iade.fastShopping.models.daos.DBConnector;
 import pt.iade.fastShopping.models.daos.LojaDAO;
+import pt.iade.fastShopping.models.daos.Popups;
 
 public class MapaAdminScreenController {
 
@@ -182,12 +183,12 @@ public class MapaAdminScreenController {
 				selecionado = false;
 				localSelecionado.setVisible(false);
 				LojaDAO.loadLojasMapa(root);
-				SidebarLojaController.warningDialog("Loja adicionada!", nome_Loja.getText() + "adicionada com sucesso!");
+				Popups.dialogInformation("Loja adicionada!", nome_Loja.getText() + "adicionada com sucesso!");
 			}
 		} else {
 			// Se nao preencheu os campos para adicionar uma nova loja
 			// vai dar uma mensagem de erro.
-			SidebarLojaController.warningDialog("Erro adicionar Loja!", "Por favor preencha os campos!");
+			Popups.dialogError("Erro adicionar Loja!", "Por favor preencha os campos!");
 		}
 	}
 

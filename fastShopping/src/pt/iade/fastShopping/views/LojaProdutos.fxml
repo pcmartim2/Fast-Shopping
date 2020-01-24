@@ -40,7 +40,7 @@
             <Font size="14.0" />
          </font>
       </Label>
-      <Label fx:id="precoTotal" layoutX="614.0" layoutY="424.0" text="0" />
-      <Button fx:id="btnRemover" layoutX="500.0" layoutY="420.0" mnemonicParsing="false" text="Remover" />
+      <Label fx:id="precoTotalCarrinho" layoutX="614.0" layoutY="424.0" text="0" />
+      <Button layoutX="500.0" layoutY="420.0" mnemonicParsing="false" onAction="#removerProdutoCarrinho" text="Remover" />
    </children>
 </AnchorPane>

@@ -6,7 +6,6 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import pt.iade.fastShopping.WindowManager;
-import pt.iade.fastShopping.models.daos.DBConnector;
 import pt.iade.fastShopping.models.daos.LoginRegistrarDAO;
 import pt.iade.fastShopping.models.daos.LojaDAO;
 

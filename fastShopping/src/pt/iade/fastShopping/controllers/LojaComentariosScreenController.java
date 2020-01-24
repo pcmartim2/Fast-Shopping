@@ -9,6 +9,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import pt.iade.fastShopping.models.Comentarios;
 import pt.iade.fastShopping.models.daos.ComentarioDAO;
+import pt.iade.fastShopping.models.daos.Popups;
 
 public class LojaComentariosScreenController {
 	
@@ -88,12 +89,12 @@ public class LojaComentariosScreenController {
 			
 			
 			//Mensagem que consegiu enviar o comentario
-			SidebarLojaController.warningDialog("Comentario enviado!", "O comentario foi enviado com sucesso!");
+			Popups.dialogInformation("Comentario enviado!", "O comentario foi enviado com sucesso!");
 
 		}
 		// Se estiver vazio vai mostrar um erro!
 		else {
-			SidebarLojaController.warningDialog("Erro ao enviar comentario!", "Por preencha o texto!");
+			Popups.dialogError("Erro ao enviar comentario!", "Por preencha o texto!");
 		}
 	}
 	

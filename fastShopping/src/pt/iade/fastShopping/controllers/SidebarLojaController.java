@@ -124,17 +124,5 @@ public class SidebarLojaController {
 			WindowManager.loadUI("views/LojaComentariosScreen.fxml", new LojaComentariosScreenController(), borderPane);
 		}
 	}
-	
-	/**
-	 * Metodo para adiconar um pop-up com um titilo e um header
-	 * @param title do pop-up
-	 * @param header do pop-up
-	 */
-	public static void warningDialog(String title, String header) {
-    	Alert alert = new Alert(AlertType.WARNING);
-    	alert.setTitle(title);
-    	alert.setHeaderText(header);
-    	alert.showAndWait();
-    }
 
 }
