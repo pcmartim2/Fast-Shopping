@@ -20,12 +20,11 @@ disponibilizadas pela aplicação, sem se preocupar em deslocar a alguma loja. A
 
 ##### Cenários:
 
-Cenários principais: O utilizador abre a aplicação, aparece um mapa da sua localização com as lojas/supermercados que se encontram há sua volta
-podendo carregar numa delas, assim aparecendo os produtos vendidos no sítio incluindo o seu preço e informação adicional caso necessário.
+Cenários principais: O utilizador abre a aplicação, aparece um mapa da sua localização com as lojas/supermercados que se encontram há sua volta podendo carregar numa delas, assim aparecendo os produtos vendidos no sítio incluindo o seu preço e informação adicional caso necessário.
 
-Cenário secundário: O utilizador seleciona a loja, carrega no botão dos favoritos e a loja é adicionada aos favoritos deste utilizador, utilizando a secção dos favoritos o utilizador irá ter todas as lojas adicionadas aos favoritos e irá incluir um botão para acesso rápido ás mesmas.
+Cenário secundário: O utilizador seleciona a loja, carrega no botão dos favoritos e a loja é adicionada aos favoritos deste utilizador. O utilizando poderá ver todos os favoritos que tem e ao clicar numa das lojas que está nos favoritos terá acesso a todos os produtos que na loja contém.
 
-Cenário secundário: O utilizador seleciona a loja, carrega no botão de comentários e consigue visualizar os comentários ou adicionar um feito por ele.
+Cenário secundário: O utilizador seleciona a loja, carrega no botão de comentários e consegue visualizar os comentários de todos os utilizadores feitos para aquela loja ou poderá também adicionar um outro comentário.
 
 ##### Referências:
 [1] Coelho, T. (2018). O que é e como funciona o Glovo? Conheça o app de delivery. Acedido em: 4, Outubro, 2019, em: https://www.techtudo.com.br/noticias/2018/11/o-que-e-e-como-funciona-o-app-glovo-conheca-o-app-de-delivery.ghtml
